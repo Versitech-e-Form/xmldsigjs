@@ -50,6 +50,7 @@ import {
     XmlDsigEnvelopedSignatureTransform,
     XmlDsigExcC14NTransform,
     XmlDsigExcC14NWithCommentsTransform,
+    XmlDsigXPathTransform
 } from "./xml/transforms";
 
 const SignatureAlgorithms: { [index: string]: ISignatureAlgorithmConstructable } = {};
@@ -103,9 +104,8 @@ export class CryptoConfig {
                 transform = new XmlDsigEnvelopedSignatureTransform();
                 break;
             case XmlSignature.AlgorithmNamespaces.XmlDsigXPathTransform:
-                throw new XmlError(XE.ALGORITHM_NOT_SUPPORTED, name);
-            // t = new XmlDsigXPathTransform();
-            // break;
+                transform = new XmlDsigXPathTransform();
+                break;
             case XmlSignature.AlgorithmNamespaces.XmlDsigXsltTransform:
                 throw new XmlError(XE.ALGORITHM_NOT_SUPPORTED, name);
             // t = new XmlDsigXsltTransform();
